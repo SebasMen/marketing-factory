@@ -21,7 +21,16 @@
     "start:backend": "npm run serve --workspace=packages/backend",
     "start:frontend": "npm run start --workspace=packages/frontend",
     "clean": "rm -rf node_modules packages/*/node_modules packages/*/dist packages/*/.next",
-    "clean:install": "npm run clean && npm install"
+    "clean:install": "npm run clean && npm install",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:restart": "docker-compose restart",
+    "docker:clean": "docker-compose down -v --remove-orphans",
+    "db:up": "docker-compose up -d postgres",
+    "db:down": "docker-compose stop postgres",
+    "db:logs": "docker-compose logs -f postgres",
+    "db:setup": "node scripts/setup-db.js"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
