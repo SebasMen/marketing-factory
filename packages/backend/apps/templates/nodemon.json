@@ -1,0 +1,6 @@
+{
+  "watch": ["apps/templates/src", "libs"],
+  "ext": "ts",
+  "exec": "npx nx build:dev templates && node --enable-source-maps dist/apps/templates/src/main.js",
+  "ignore": ["dist", "node_modules"]
+}

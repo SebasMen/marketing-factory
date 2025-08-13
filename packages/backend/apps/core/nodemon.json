@@ -1,0 +1,6 @@
+{
+  "watch": ["apps/core/src", "libs"],
+  "ext": "ts",
+  "exec": "npx nx build:dev core && node --enable-source-maps dist/apps/core/src/main.js",
+  "ignore": ["dist", "node_modules"]
+}

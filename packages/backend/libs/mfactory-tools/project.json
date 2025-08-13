@@ -1,0 +1,48 @@
+{
+  "name": "@mfactory-be/mfactory-tools",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/mfactory-tools/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/mfactory-tools",
+        "main": "libs/mfactory-tools/src/index.ts",
+        "tsConfig": "libs/mfactory-tools/tsconfig.lib.json",
+        "assets": [
+          "libs/mfactory-tools/*.md",
+          {
+            "input": "./libs/mfactory-tools/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/mfactory-tools/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/mfactory-tools",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./libs/mfactory-tools",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "build:dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p libs/mfactory-tools/tsconfig.lib.json --sourceMap && tsc-alias -p libs/mfactory-tools/tsconfig.lib.json",
+        "cwd": "."
+      }
+    }
+  }
+}

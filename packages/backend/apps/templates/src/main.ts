@@ -1,0 +1,59 @@
+/**
+ * This is not a production server yet!
+ * This is only a minimal backend to get started.
+ */
+import 'reflect-metadata';
+import { isProdEnv, isQAEnv } from '@mfactory-be/commonTypes/global';
+import { Logger } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import session from 'express-session';
+import helmet from 'helmet';
+import passport from 'passport';
+import { AppModule } from './app/app.module';
+import { CustomAuthExceptionFilter } from './common/exception.filter';
+import _ from 'lodash';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  const globalPrefix = 'templates';
+  app.setGlobalPrefix(globalPrefix);
+
+  app.enableCors();
+
+  app.use(
+    session({
+      secret: process.env.JWT_SECRET,
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        maxAge: 1 * 60 * 1000, // 5 minutes
+        httpOnly: true,
+        secure: isQAEnv() && isProdEnv(),
+      },
+    }),
+  );
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  app.useGlobalFilters(new CustomAuthExceptionFilter());
+
+  const config = new DocumentBuilder()
+    .setTitle(`Marketing Factory - MS ${_.startCase(globalPrefix)} API`)
+    .setDescription(`The following describes the documentation for using the ${_.startCase(globalPrefix)} MS APIs.`)
+    .setVersion('1.0')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup(`${globalPrefix}/docs`, app, document);
+
+  // somewhere in your initialization file
+  app.use(helmet());
+
+  const port = 3001;
+  await app.listen(port);
+  Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
+}
+
+bootstrap();

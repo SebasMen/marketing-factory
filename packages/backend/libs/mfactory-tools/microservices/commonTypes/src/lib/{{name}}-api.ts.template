@@ -1,0 +1,9 @@
+import { MS } from '@mfactory-be/commonTypes/global';
+import { MSCallHandler, MSCallMiddleware } from '@mfactory-be/utils/ms-call';
+import { <%= camelName %>MSCallContracts } from './contracts';
+import { <%= camelName %>MSCallPayloads } from './payloads';
+import { <%= camelName %>MSCallResponses } from './responses';
+
+const <%= camelName %>MSCallApi = {};
+
+export const <%= name %>MSCallInvoke = new MSCallMiddleware(MS.<%= upperName %>, <%= camelName %>MSCallApi);

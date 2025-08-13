@@ -1,0 +1,32 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "rootDir": ".",
+    "sourceMap": true,
+    "inlineSources": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@mfactory-be/commonTypes/core": ["libs/commonTypes/core/src/index.ts"],
+      "@mfactory-be/commonTypes/global": ["libs/commonTypes/global/src/index.ts"],
+      "@mfactory-be/mfactory-tools": ["libs/mfactory-tools/src/index.ts"],
+      "@mfactory-be/providers/translation": ["libs/providers/translation/src/index.ts"],
+      "@mfactory-be/providers/secret-service": ["libs/providers/secret-service/src/index.ts"],
+      "@mfactory-be/utils/ms-call": ["libs/utils/ms-call/src/index.ts"],
+      "@mfactory-be/utils/objects": ["libs/utils/objects/src/index.ts"],
+      "@mfactory-be/utils/random": ["libs/utils/random/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

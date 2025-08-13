@@ -1,0 +1,27 @@
+{
+  "name": "global",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/commonTypes/global/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/commonTypes/global",
+        "tsConfig": "libs/commonTypes/global/tsconfig.lib.json",
+        "packageJson": "libs/commonTypes/global/package.json",
+        "main": "libs/commonTypes/global/src/index.ts",
+        "assets": ["libs/commonTypes/global/*.md"]
+      }
+    },
+    "build:dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p libs/commonTypes/global/tsconfig.lib.json --sourceMap && tsc-alias -p libs/commonTypes/global/tsconfig.lib.json",
+        "cwd": "."
+      }
+    }
+  }
+}

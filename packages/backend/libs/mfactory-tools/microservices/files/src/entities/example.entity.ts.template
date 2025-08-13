@@ -1,0 +1,24 @@
+import { OmitPartial } from '@mfactory-be/utils/objects';
+import { randomUUID } from '@mfactory-be/utils/random';
+import { CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+
+@Entity({ name: 'example' })
+export class ExampleEntity {
+  @PrimaryGeneratedColumn('uuid')
+  id?: string;
+
+  /** Creation date */
+  @CreateDateColumn()
+  createdAt?: Date;
+
+  /** Updating Date */
+  @UpdateDateColumn()
+  updatedAt?: Date;
+
+  constructor(payload?: OmitPartial<ExampleEntity, 'createdAt' | 'updatedAt' | 'id'>) {
+    this.id = randomUUID();
+    if (payload) {
+      this.id = payload.id;
+    }
+  }
+}

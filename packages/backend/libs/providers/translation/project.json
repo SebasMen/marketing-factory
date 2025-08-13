@@ -1,0 +1,27 @@
+{
+  "name": "@mfactory-be/providers/translation",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/providers/translation/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/providers/translation",
+        "tsConfig": "libs/providers/translation/tsconfig.lib.json",
+        "packageJson": "libs/providers/translation/package.json",
+        "main": "libs/providers/translation/src/index.ts",
+        "assets": ["libs/providers/translation/*.md"]
+      }
+    },
+    "build:dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p libs/providers/translation/tsconfig.lib.json --sourceMap && tsc-alias -p libs/providers/translation/tsconfig.lib.json",
+        "cwd": "."
+      }
+    }
+  }
+}

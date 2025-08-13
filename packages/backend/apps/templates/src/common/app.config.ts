@@ -1,0 +1,29 @@
+import { IEnvironment } from '@mfactory-be/commonTypes/global';
+import * as J from 'joi';
+
+export const appConfig = (): IEnvironment => {
+  return {
+    port: +process.env.PORT,
+    database: {
+      host: process.env.DB_HOST,
+      port: +process.env.DB_PORT,
+      username: process.env.DB_USER,
+      db_name: process.env.DB_NAME,
+      password: process.env.DB_PASS,
+    },
+    secret: process.env.JWT_SECRET,
+  };
+};
+
+/** Environment variables schema validation */
+export const validationSchema = J.object({
+  PORT: J.number().default(process.env.PORT || 5001),
+  DB_HOST: J.required(),
+  DB_PORT: J.number().default(process.env.DB_PORT || 5432),
+  DB_NAME: J.required(),
+  DB_USER: J.required(),
+  DB_PASS: J.required(),
+  JWT_SECRET: J.required(),
+  SHA_KEY: J.required(),
+  BLIND_ENCRYPTION_KEY: J.required(),
+});

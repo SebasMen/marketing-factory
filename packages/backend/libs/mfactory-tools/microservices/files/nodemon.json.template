@@ -1,0 +1,6 @@
+{
+  "watch": ["apps/<%= name %>/src", "libs"],
+  "ext": "ts",
+  "exec": "npx nx build:dev <%= name %> && node dist/apps/<%= name %>/main.js",
+  "ignore": ["dist", "node_modules"]
+}

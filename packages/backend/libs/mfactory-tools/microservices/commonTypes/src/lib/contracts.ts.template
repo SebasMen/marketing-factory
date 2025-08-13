@@ -1,0 +1,5 @@
+import { <%= camelName %>MSCall } from './<%= name %>';
+import * as J from 'joi';
+
+export const <%= camelName %>MSCallContracts = {
+};

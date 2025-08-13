@@ -1,0 +1,3 @@
+import { ExampleEntity } from '../entities/example.entity';
+
+export default [ExampleEntity];

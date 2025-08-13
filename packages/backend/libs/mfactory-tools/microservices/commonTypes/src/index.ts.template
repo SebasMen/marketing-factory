@@ -1,0 +1,5 @@
+export * from './lib/<%= name %>';
+export * from './lib/contracts';
+export * from './lib/payloads';
+export * from './lib/responses';
+export * from './lib/<%= name %>-api';

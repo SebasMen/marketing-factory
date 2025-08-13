@@ -1,0 +1,20 @@
+{
+  "name": "@mfactory-be/providers/secret-service",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/providers/secret-service/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/providers/secret-service",
+        "tsConfig": "libs/providers/secret-service/tsconfig.lib.json",
+        "packageJson": "libs/providers/secret-service/package.json",
+        "main": "libs/providers/secret-service/src/index.ts",
+        "assets": ["libs/providers/secret-service/*.md"]
+      }
+    }
+  }
+}

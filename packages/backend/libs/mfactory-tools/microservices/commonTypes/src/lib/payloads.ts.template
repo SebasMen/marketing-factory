@@ -1,0 +1,4 @@
+import { <%= camelName %>MSCall } from './<%= name %>';
+
+export type <%= camelName %>MSCallPayloads = {
+};

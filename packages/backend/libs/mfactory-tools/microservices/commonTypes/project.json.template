@@ -1,0 +1,37 @@
+{
+  "name": "commonTypes<%= camelName %>",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/commonTypes/<%= name %>/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/libs/commonTypes/<%= name %>",
+        "tsConfig": "libs/commonTypes/<%= name %>/tsconfig.lib.json",
+        "packageJson": "libs/commonTypes/<%= name %>/package.json",
+        "main": "libs/commonTypes/<%= name %>/src/index.ts",
+        "assets": [
+          "libs/commonTypes/<%= name %>/*.md"
+        ]
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "dependencies"
+        }
+      ]
+    },
+    "build:dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p libs/commonTypes/<%= name %>/tsconfig.lib.json --sourceMap && tsc-alias -p libs/commonTypes/<%= name %>/tsconfig.lib.json",
+        "cwd": "."
+      }
+    }
+  }
+}

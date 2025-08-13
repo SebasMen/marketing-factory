@@ -1,0 +1,37 @@
+{
+  "name": "commonTypesCore",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/commonTypes/core/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/libs/commonTypes/core",
+        "tsConfig": "libs/commonTypes/core/tsconfig.lib.json",
+        "packageJson": "libs/commonTypes/core/package.json",
+        "main": "libs/commonTypes/core/src/index.ts",
+        "assets": [
+          "libs/commonTypes/core/*.md"
+        ]
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "dependencies"
+        }
+      ]
+    },
+    "build:dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p libs/commonTypes/core/tsconfig.lib.json --sourceMap && tsc-alias -p libs/commonTypes/core/tsconfig.lib.json",
+        "cwd": "."
+      }
+    }
+  }
+}

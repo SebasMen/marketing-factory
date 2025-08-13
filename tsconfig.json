@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@marketing-factory/backend/*": ["packages/backend/src/*"],
+      "@marketing-factory/frontend/*": ["packages/frontend/src/*"]
+    }
+  },
+  "references": [
+    {
+      "path": "./packages/backend"
+    },
+    {
+      "path": "./packages/frontend"
+    }
+  ],
+  "exclude": ["node_modules", "dist", "build", ".next"]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "ms-call",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/utils/ms-call/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/utils/ms-call",
+        "tsConfig": "libs/utils/ms-call/tsconfig.lib.json",
+        "packageJson": "libs/utils/ms-call/package.json",
+        "main": "libs/utils/ms-call/src/index.ts",
+        "assets": ["libs/utils/ms-call/*.md"]
+      }
+    },
+    "build:dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p libs/utils/ms-call/tsconfig.lib.json --sourceMap && tsc-alias -p libs/utils/ms-call/tsconfig.lib.json",
+        "cwd": "."
+      }
+    }
+  }
+}
