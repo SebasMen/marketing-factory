@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:custom": "node scripts/dev.js",
     "dev:backend": "npm run serve --workspace=packages/backend",
     "dev:frontend": "npm run dev --workspace=packages/frontend",
     "build": "npm run build --workspace=packages/backend && npm run build --workspace=packages/frontend",
@@ -18,7 +19,9 @@
     "install:all": "npm install",
     "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
     "start:backend": "npm run serve --workspace=packages/backend",
-    "start:frontend": "npm run start --workspace=packages/frontend"
+    "start:frontend": "npm run start --workspace=packages/frontend",
+    "clean": "rm -rf node_modules packages/*/node_modules packages/*/dist packages/*/.next",
+    "clean:install": "npm run clean && npm install"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
